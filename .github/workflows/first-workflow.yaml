@@ -23,5 +23,4 @@ jobs:
       steps:
         - name: echo a strings
           run: write-output "windows-string"
-        - name: error state
-          run: doesnotexist
+
