@@ -24,4 +24,4 @@ jobs:
         runs-on: windows-latest
         steps:
             - name: echo a string
-              run: Write-Output "Windows String"
+              run: Write-Output "Windows Strings"
