@@ -20,8 +20,8 @@ jobs:
               run: sw_vers
 
 
-    parallel-jobs-macos:
-        runs-on: macos-latest
+    parallel-jobs-windows:
+        runs-on: windows-latest
         steps:
-            - name: View SW Version
-              run: sw_vers  
+            - name: echo a string
+              run: Write-Output "Windows String"
