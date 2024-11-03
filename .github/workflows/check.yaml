@@ -1,0 +1,10 @@
+name: checkout
+on: [push]
+
+jobs:
+    checkout and names:
+        runs-on: ubuntu-latest
+        steps:
+            - name: simple json action
+              uses: action/hello-world-javascript-action@main
+            
