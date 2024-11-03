@@ -2,7 +2,7 @@ name: checkout
 on: [push]
 
 jobs:
-    checkout and names:
+    simple:
         runs-on: ubuntu-latest
         steps:
             - name: simple json action
