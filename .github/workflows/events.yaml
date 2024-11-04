@@ -10,3 +10,8 @@ jobs:
                 echo $GITHUB_SHA
                 echo $GITHUB_REF
             - uses: actions/checkout@v3
+
+    checkout-tests:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v3
