@@ -1,0 +1,10 @@
+name: workflowfun
+on:
+    workflow_event:
+        workflows: [repo events]
+        types: [completed]
+jobs:
+    echo-string:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "i was triggered because  repo events completed"
