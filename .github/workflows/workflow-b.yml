@@ -1,0 +1,17 @@
+name: Workflow B
+
+on:
+  workflow_run:
+    workflows: ["workflow a"]
+    types:
+      - completed
+
+jobs:
+  dependent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Run dependent tasks
+        run: echo "Running Workflow B tasks after Workflow A"
