@@ -1,9 +1,8 @@
-name: workflowfun
+name: workflow run
 on:
     workflow_run:
-        workflows: ["repo events"]
-        types: 
-            - completed
+        workflows: [repo events]
+        types: [completed]
 jobs:
     echo-string:
         runs-on: ubuntu-latest
