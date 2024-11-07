@@ -1,0 +1,24 @@
+name: Repository Events
+on:
+  push:
+    branches:
+        - "feature/*" 
+        - "!main"   # this will be exception.
+
+#    tags:
+#      - v1.*
+#    - "!v1.1.1"
+
+  pull_request:
+    types: [opened, assigned, reopened, synchronize]
+  issues:
+    types: [opened]
+
+jobs:
+  checkout-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
+      - uses: actions/checkout@v3
