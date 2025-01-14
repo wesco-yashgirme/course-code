@@ -1,0 +1,56 @@
+name: Update JSON Files
+
+on: [push]
+
+jobs:
+  replace-values:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up jq
+        run: sudo apt-get install jq
+
+      - name: Replace placeholders in JSON files
+        run: |
+          # Path to the actual values JSON file
+          actual_values_file="matt-Integration/values.json"
+          
+          # Path to the main JSON file to be updated
+          main_json_file="matt-Integration/APIM/apis/api-matt-dev/test.json"
+  
+          # Create a temporary file for the updated content
+          temp_file=$(mktemp)
+  
+          # Read the content of the actual values JSON file
+          actual_values_content=$(cat "$actual_values_file")
+          
+          # Read the content of the actual values JSON file
+          main_json_content=$(cat "$main_json_file")
+          
+          # Replace placeholders in the main JSON content and write to the temporary file
+          jq --argjson values "$actual_values_content" '
+          walk(
+          if type == "object" then
+          with_entries(if .value | type == "string" and .value | test("\\{\\{.*\\}\\}") then . + {value: ($values[.value | gsub("\\{\\{|\\}\\}"; "")] // .value)} else . end)
+          else
+          .
+          end
+          )' > "$temp_file"
+  
+          # Print the updated content from the temporary file for verification
+          echo "Updated JSON file content:"
+          cat "$temp_file"
+
+#      - name: Commit changes
+#        run: |
+#          git config --global user.name 'github-actions'
+#          git config --global user.email 'github-actions@github.com'
+#          for file in $(find . -type f -name "updated_*.json"); do
+#            mv "$file" "${file/updated_/}"
+#          done
+#          git add .
+#          git commit -m 'Update JSON files with actual values'
+#          git push

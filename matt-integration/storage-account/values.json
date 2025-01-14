@@ -1,0 +1,6 @@
+{
+    "displayName": "MyAPI",
+    "path": "myapi",
+    "header": "api-key",
+    "query": "api-query"
+  }

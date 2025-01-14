@@ -1,0 +1,17 @@
+{
+    "properties": {
+      "apiRevision": "1",
+      "authenticationSettings": {},
+      "displayName": "{{displayName}}",
+      "isCurrent": true,
+      "path": "{{path}}",
+      "protocols": [
+        "https"
+      ],
+      "subscriptionKeyParameterNames": {
+        "header": "{{header}}",
+        "query": "{{query}}"
+      },
+      "subscriptionRequired": false
+    }
+  }
