@@ -16,7 +16,7 @@ jobs:
       - name: Replace placeholders in JSON files
         run: |
           # Path to the actual values JSON file
-          actual_values_file="matt-Integration/values.json"
+          actual_values_file="matt-integration/values.json"
           
           # Path to the main JSON file to be updated
           main_json_file="matt-Integration/APIM/apis/api-matt-dev/test.json"
